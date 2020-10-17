@@ -1,0 +1,25 @@
+<launch>
+
+
+  <arg name="node_ns" default="obstacle_detection" />
+
+  <arg name="debug" default="false" />
+
+<group if="$(eval arg('debug') == false)">
+
+<node
+pkg = "elevation_mapping"
+type = "topic_conversion_node"
+name="$(arg node_ns)" 
+output = "screen"
+/>
+
+</group>
+
+
+  <group ns="$(arg node_ns)">
+	<rosparam command="load" file="$(find elevation_mapping_demos)/config/robots/talos_robot.yaml" />
+</group>
+
+
+</launch>

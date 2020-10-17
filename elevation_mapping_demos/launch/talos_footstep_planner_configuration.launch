@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+
+  <arg name="robot" default="full_v2_fixed_upper_body" />
+
+
+  <include file="$(find talos_pal_locomotion)/launch/talos_dcm_walking_controller.launch">
+      <arg name="robot" value="$(arg robot)" />
+  </include>
+
+
+  <include file="$(find talos_controller_configuration)/launch/position_controllers.launch">
+      <arg name="robot" value="upper_body" />
+  </include>
+
+  <include file="$(find joint_torque_sensor_state_controller)/joint_torque_sensor_state_controller.launch" />
+
+  <include file="$(find talos_controller_configuration)/launch/walk_pose.launch" />
+
+  <node name="head_controller"
+        pkg="rqt_joint_trajectory_controller" 
+	type="rqt_joint_trajectory_controller" 	
+	output="screen"
+        />
+
+
+
+</launch>

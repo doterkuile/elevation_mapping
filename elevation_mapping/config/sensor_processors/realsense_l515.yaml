@@ -1,0 +1,7 @@
+# realsense L515
+# TODO: find specifics properties, currently a copy of the Hokuyo sensor is used
+
+sensor_processor/type: laser
+sensor_processor/min_radius: 0.018
+sensor_processor/beam_angle: 0.0006
+sensor_processor/beam_constant: 0.0015
